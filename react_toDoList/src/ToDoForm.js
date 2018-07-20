@@ -2,9 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import validate from './validate';
 import ToDoItems from './ToDoItems';
 import { addTask as addTaskActionCreator } from './actions';
 import style from './style.css';
+
+const renderField = ({ input, type, meta: { touched, error } }) => {
+  return (
+    <div>
+      <input {...input} type={type} />
+      {touched && (error && <span>{error}</span>)}
+    </div>
+  );
+};
 
 const ToDoForm = props => {
   const { tasks, handleSubmit } = props;
@@ -12,13 +22,14 @@ const ToDoForm = props => {
     <div>
       <form onSubmit={handleSubmit}>
         <Field
-          component="input"
+          component={renderField}
           type="text"
           name="newToDo"
           placeholder="Enter a todo item..."
-          required
         />
-        <input type="submit" value="Add New ToDo Item" />
+        <div>
+          <input type="submit" value="Add New ToDo Item" />
+        </div>
       </form>
       <table className="table">
         {tasks.map(function(task, index) {
@@ -40,8 +51,21 @@ ToDoForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
+renderField.propTypes = {
+  input: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  meta: PropTypes.objectOf(
+    PropTypes.shape({
+      touched: PropTypes.bool.isRequired,
+      error: PropTypes.string,
+      warning: PropTypes.string
+    })
+  ).isRequired
+};
+
 const ToDoForms = reduxForm({
   form: 'todo',
+  validate,
   onSubmit: (values, _, { addTask, reset }) => {
     addTask(values);
     reset('todo');
