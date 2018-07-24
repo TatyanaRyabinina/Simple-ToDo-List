@@ -1,16 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
+import App from './containers/App';
 import store from './store';
-import SimpleForm from './ToDoForm';
-import style from './style.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <h2>Simple ToDo Form</h2>
-      {<SimpleForm />}
-    </div>
+    <App />
   </Provider>,
   document.getElementById('itemContainer')
 );
