@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 // const createReactClass = require("create-react-class");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: './src/index.html',
+  template: './src/public/index.html',
   filename: './index.html'
 });
 

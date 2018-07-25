@@ -1,11 +1,11 @@
 import { put, call } from 'redux-saga/effects';
 import { takeEvery } from 'redux-saga';
 
-import { TODO_URL } from '../constants/url';
+import { TODO_URL } from '../constants/urls';
 import api from '../services/api';
 import {
   requestGetTaskSuccess,
-  requestGetTaskFailed,
+  requestTaskFailed,
   requestAddTaskSuccess,
   requestDeleteTaskSuccess,
   requestCompleteTaskSuccess
@@ -22,7 +22,7 @@ function* getToDos() {
     const data = yield call(api.get, TODO_URL);
     yield put(requestGetTaskSuccess(data));
   } catch (error) {
-    yield put(requestGetTaskFailed(error));
+    yield put(requestTaskFailed(error));
   }
 }
 
@@ -33,7 +33,7 @@ function* addToDos(action) {
     });
     yield put(requestAddTaskSuccess(data));
   } catch (error) {
-    //yield put(requestTaskFailed(error));
+    yield put(requestTaskFailed(error));
   }
 }
 
@@ -42,7 +42,7 @@ function* deleteToDos(action) {
     const data = yield call(api.delete, `${TODO_URL}/${action.task.id}`);
     yield put(requestDeleteTaskSuccess(data));
   } catch (error) {
-    //yield put(requestTaskFailed(error));
+    yield put(requestTaskFailed(error));
   }
 }
 
@@ -53,9 +53,9 @@ function* completeToDos(action) {
         done: !action.task.done
       }
     });
-    yield put(requestCompleteTaskSuccess(data)); //getTask());
+    yield put(requestCompleteTaskSuccess(data));
   } catch (error) {
-    //yield put(requestTaskFailed(error));
+    yield put(requestTaskFailed(error));
   }
 }
 

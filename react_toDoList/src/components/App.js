@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import SimpleForm from './ToDoForm';
-import style from '../style.css';
+import SimpleForm from '../containers/ToDoForm';
 
 class App extends Component {
   render() {

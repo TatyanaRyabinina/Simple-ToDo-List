@@ -4,10 +4,11 @@ import {
   REQUEST_GET_TASK_SUCCESS,
   REQUEST_ADD_TASK_SUCCESS,
   REQUEST_DELETE_TASK_SUCCESS,
-  REQUEST_COMPLETE_TASK_SUCCESS
+  REQUEST_COMPLETE_TASK_SUCCESS,
+  REQUEST_TASK_FAILED
 } from '../constants/actionTypes';
 
-const TaskReducer = (state = [] /*tasks*/, action) => {
+const TaskReducer = (state = [], action) => {
   switch (action.type) {
     case REQUEST_GET_TASK_SUCCESS:
       state = action.task;
@@ -27,6 +28,8 @@ const TaskReducer = (state = [] /*tasks*/, action) => {
           item.done = !item.done;
         }
       });
+      return state;
+    case REQUEST_TASK_FAILED:
       return state;
     default:
       return state;
