@@ -1,6 +1,11 @@
 import { BASE_URL } from '../constants/urls';
 
 const sendApi = method => (url, options = {}) => {
+  /*let init = {
+    method: method,
+    body: options.body ? JSON.stringify(options.body) : null,
+    headers: { 'Content-Type': 'application/json' }
+  };*/
   if (options.body) {
     options.body = JSON.stringify(options.body);
   }

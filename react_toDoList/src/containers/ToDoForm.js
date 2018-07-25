@@ -13,7 +13,8 @@ import {
 
 class ToDoForm extends Component {
   componentDidMount() {
-    this.props.getTask();
+    const { getTask } = this.props;
+    getTask();
   }
   render() {
     const { tasks, handleSubmit } = this.props;
@@ -43,7 +44,8 @@ ToDoForm.propTypes = {
       name: PropTypes.string
     })
   ).isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  getTask: PropTypes.func.isRequired
 };
 
 const ToDoForms = reduxForm({
