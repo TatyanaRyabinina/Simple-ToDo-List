@@ -1,20 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import App from './App';
+import { Router, Route } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
-const Root = ({ store }) => (
+import ToDoApp from './ToDoApp';
+import CategoryApp from './CategoryApp';
+
+const Root = ({ store, history, persistor }) => (
   <Provider store={store}>
-    <Router>
-      <Route component={App} />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router history={history}>
+        <div>
+          <Route path="/todo" component={ToDoApp} />
+          <Route path="/category" component={CategoryApp} />
+        </div>
+      </Router>
+    </PersistGate>
   </Provider>
 );
 
 Root.propTypes = {
   store: PropTypes.shape({
-    tasks: PropTypes.arrayOf(
+    todos: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number,
         done: PropTypes.bool,

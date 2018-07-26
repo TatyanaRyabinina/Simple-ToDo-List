@@ -1,76 +1,76 @@
 import {
-  ADD_TASK,
-  REQUEST_ADD_TASK_SUCCESS,
-  DELETE_TASK,
-  REQUEST_DELETE_TASK_SUCCESS,
-  COMPLETE_TASK,
-  REQUEST_COMPLETE_TASK_SUCCESS,
-  GET_TASK,
-  REQUEST_GET_TASK_SUCCESS,
-  REQUEST_TASK_FAILED
-} from '../constants/actionTypes';
+  ADD_TODO,
+  REQUEST_ADD_TODO_SUCCESS,
+  DELETE_TODO,
+  REQUEST_DELETE_TODO_SUCCESS,
+  COMPLETE_TODO,
+  REQUEST_COMPLETE_TODO_SUCCESS,
+  GET_TODO,
+  REQUEST_GET_TODO_SUCCESS,
+  REQUEST_TODO_FAILED
+} from '../constants/todo.constants.actionTypes';
 
-export const getTask = () => {
+export const getToDo = () => {
   return {
-    type: GET_TASK
+    type: GET_TODO
   };
 };
 
-export const requestGetTaskSuccess = task => {
+export const requestGetToDoSuccess = todo => {
   return {
-    type: REQUEST_GET_TASK_SUCCESS,
-    task
+    type: REQUEST_GET_TODO_SUCCESS,
+    todo
   };
 };
 
-export const addTask = task => {
+export const addToDo = todo => {
   return {
-    type: ADD_TASK,
-    task: {
-      name: task.newToDo,
+    type: ADD_TODO,
+    todo: {
+      name: todo.newToDo,
       done: false
     }
   };
 };
 
-export const requestAddTaskSuccess = task => {
+export const requestAddToDoSuccess = todo => {
   return {
-    type: REQUEST_ADD_TASK_SUCCESS,
-    task: task
+    type: REQUEST_ADD_TODO_SUCCESS,
+    todo: todo
   };
 };
 
-export const deleteTask = task => {
+export const deleteToDo = todo => {
   return {
-    type: DELETE_TASK,
-    task
+    type: DELETE_TODO,
+    todo
   };
 };
 
-export const requestDeleteTaskSuccess = task => {
+export const requestDeleteToDoSuccess = todo => {
   return {
-    type: REQUEST_DELETE_TASK_SUCCESS,
-    task: task
+    type: REQUEST_DELETE_TODO_SUCCESS,
+    todo: todo
   };
 };
 
-export const completeTask = task => {
+export const completeToDo = todo => {
   return {
-    type: COMPLETE_TASK,
-    task
+    type: COMPLETE_TODO,
+    todo
   };
 };
 
-export const requestCompleteTaskSuccess = task => {
+export const requestCompleteToDoSuccess = todo => {
   return {
-    type: REQUEST_COMPLETE_TASK_SUCCESS,
-    task: task
+    type: REQUEST_COMPLETE_TODO_SUCCESS,
+    todo: todo
   };
 };
 
-export const requestTaskFailed = error => {
+export const requestToDoFailed = error => {
   return {
-    type: REQUEST_TASK_FAILED,
+    type: REQUEST_TODO_FAILED,
     error
   };
 };

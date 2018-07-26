@@ -5,3 +5,7 @@
 #itemContainer div {
   padding: 5px;
 }
+
+.done {
+  text-decoration: line-through;
+}

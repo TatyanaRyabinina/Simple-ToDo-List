@@ -3,33 +3,31 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
-  completeTask as completeTaskActionCreator,
-  deleteTask as deleteTaskActionCreator
+  completeToDo as completeToDoActionCreator,
+  deleteToDo as deleteToDoActionCreator
 } from '../actions/todo.actions';
 
 const ToDoItems = props => {
-  const { id, task } = props;
+  const { id, todo } = props;
   return (
     <tbody>
       <tr>
         <td>{id}</td>
-        <td style={task.done ? { textDecoration: 'line-through' } : {}}>
-          {task.name}
-        </td>
+        <td className={todo.done ? 'done' : ''}>{todo.name}</td>
         <td>
           <input
             type="checkbox"
             onChange={() =>
-              props.completeTask({ id: task.id, done: task.done })
+              props.completeToDo({ id: todo.id, done: todo.done })
             }
-            checked={task.done}
+            checked={todo.done}
           />
         </td>
         <td>
           <input
             type="button"
             value="Delete"
-            onClick={() => props.deleteTask({ id: task.id })}
+            onClick={() => props.deleteToDo({ id: todo.id })}
           />
         </td>
       </tr>
@@ -38,26 +36,26 @@ const ToDoItems = props => {
 };
 
 ToDoItems.propTypes = {
-  task: PropTypes.shape({
+  todo: PropTypes.shape({
     id: PropTypes.number,
     done: PropTypes.bool,
     name: PropTypes.string
   }).isRequired,
   id: PropTypes.number.isRequired,
-  completeTask: PropTypes.func.isRequired,
-  deleteTask: PropTypes.func.isRequired
+  completeToDo: PropTypes.func.isRequired,
+  deleteToDo: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks
+    todos: state.todos
   };
 }
 
 export default connect(
   mapStateToProps,
   {
-    completeTask: completeTaskActionCreator,
-    deleteTask: deleteTaskActionCreator
+    completeToDo: completeToDoActionCreator,
+    deleteToDo: deleteToDoActionCreator
   }
 )(ToDoItems);
