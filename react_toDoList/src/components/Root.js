@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
+import { ConnectedRouter } from 'react-router-redux';
 
 import ToDoApp from './ToDoApp';
 import CategoryApp from './CategoryApp';
@@ -10,26 +11,20 @@ import CategoryApp from './CategoryApp';
 const Root = ({ store, history, persistor }) => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <div>
-          <Route path="/todo" component={ToDoApp} />
-          <Route path="/category" component={CategoryApp} />
+          <Route exact path="/categories" component={CategoryApp} />
+          <Route path="/categories/:id/todos" component={ToDoApp} />
         </div>
-      </Router>
+      </ConnectedRouter>
     </PersistGate>
   </Provider>
 );
 
 Root.propTypes = {
-  store: PropTypes.shape({
-    todos: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        done: PropTypes.bool,
-        name: PropTypes.string
-      })
-    )
-  }).isRequired
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object,
+  persistor: PropTypes.object
 };
 
 export default Root;

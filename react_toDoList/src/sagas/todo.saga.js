@@ -3,7 +3,7 @@ import { takeEvery } from 'redux-saga';
 import { reset } from 'redux-form';
 
 import { TODO_FORM } from '../constants/forms';
-import { TODO_URL } from '../constants/urls';
+import { TODO_URL, CATEGORY_URL } from '../constants/urls';
 import api from '../services/api';
 import {
   requestGetToDoSuccess,
@@ -21,16 +21,17 @@ import {
 
 function* getToDos() {
   try {
-    const data = yield call(api.get, TODO_URL);
+    const data = yield call(api.get, `${CATEGORY_URL}/1/${TODO_URL}`);
+    console.log(data);
     yield put(requestGetToDoSuccess(data));
   } catch (error) {
     yield put(requestToDoFailed(error));
   }
 }
 
-function* addToDos(action) {
+function* addToDo(action) {
   try {
-    const data = yield call(api.post, TODO_URL, {
+    const data = yield call(api.post, `${CATEGORY_URL}/1/${TODO_URL}`, {
       body: action.todo
     });
     yield put(requestAddToDoSuccess(data));
@@ -40,22 +41,29 @@ function* addToDos(action) {
   }
 }
 
-function* deleteToDos(action) {
+function* deleteToDo(action) {
   try {
-    const data = yield call(api.delete, `${TODO_URL}/${action.todo.id}`);
+    const data = yield call(
+      api.delete,
+      `${CATEGORY_URL}/10/${TODO_URL}/${action.todo.id}`
+    );
     yield put(requestDeleteToDoSuccess(data));
   } catch (error) {
     yield put(requestToDoFailed(error));
   }
 }
 
-function* completeToDos(action) {
+function* completeToDo(action) {
   try {
-    const data = yield call(api.put, `${TODO_URL}/${action.todo.id}`, {
-      body: {
-        done: !action.todo.done
+    const data = yield call(
+      api.put,
+      `${CATEGORY_URL}/10/${TODO_URL}/${action.todo.id}`,
+      {
+        body: {
+          done: !action.todo.done
+        }
       }
-    });
+    );
     yield put(requestCompleteToDoSuccess(data));
   } catch (error) {
     yield put(requestToDoFailed(error));
@@ -65,8 +73,8 @@ function* completeToDos(action) {
 export default function* todoSaga() {
   yield* [
     takeEvery(GET_TODO, getToDos),
-    takeEvery(ADD_TODO, addToDos),
-    takeEvery(DELETE_TODO, deleteToDos),
-    takeEvery(COMPLETE_TODO, completeToDos)
+    takeEvery(ADD_TODO, addToDo),
+    takeEvery(DELETE_TODO, deleteToDo),
+    takeEvery(COMPLETE_TODO, completeToDo)
   ];
 }

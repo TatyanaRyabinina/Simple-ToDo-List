@@ -13,8 +13,28 @@ const sendApi = method => (url, options = {}) => {
   options.method = method;
   options.header = { 'Content-Type': 'application/json' };
 
-  return fetch(`${BASE_URL}/${url}`, options).then(response => response.json());
+  return myFetch(`${BASE_URL}/${url}`, options).then(response =>
+    response.json()
+  );
 };
+
+function myFetch(url, options) {
+  if (options == null) {
+    options = {};
+  }
+  if (options.credentials == null) {
+    options.credentials = 'same-origin';
+  }
+  return fetch(url, options).then(response => {
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response);
+    } else {
+      var error = new Error(response.statusText || response.status);
+      error.response = response;
+      return Promise.reject(error);
+    }
+  });
+}
 
 export default {
   get: sendApi('GET'),

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ToDoField = props => {
+const RenderField = props => {
   const {
     input,
     type,
@@ -15,8 +15,8 @@ const ToDoField = props => {
   );
 };
 
-ToDoField.propTypes = {
-  input: PropTypes.string.isRequired,
+RenderField.propTypes = {
+  input: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
   meta: PropTypes.objectOf(
     PropTypes.shape({
@@ -26,4 +26,4 @@ ToDoField.propTypes = {
   ).isRequired
 };
 
-export default ToDoField;
+export default RenderField;

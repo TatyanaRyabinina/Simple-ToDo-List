@@ -15,8 +15,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/prefer-stateless-function': [0, { ignorePureComponents: true }],
-    'react/jsx-one-expression-per-line': 'error',
-
+    'react/jsx-one-expression-per-line': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],

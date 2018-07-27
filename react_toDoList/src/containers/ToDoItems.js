@@ -13,7 +13,7 @@ const ToDoItems = props => {
     <tbody>
       <tr>
         <td>{id}</td>
-        <td className={todo.done ? 'done' : ''}>{todo.name}</td>
+        <td className={todo.done ? 'done' : ''}>{todo.todoName}</td>
         <td>
           <input
             type="checkbox"
@@ -37,9 +37,9 @@ const ToDoItems = props => {
 
 ToDoItems.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     done: PropTypes.bool,
-    name: PropTypes.string
+    todoName: PropTypes.string
   }).isRequired,
   id: PropTypes.number.isRequired,
   completeToDo: PropTypes.func.isRequired,

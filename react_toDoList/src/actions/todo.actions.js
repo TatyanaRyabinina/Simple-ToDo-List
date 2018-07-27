@@ -3,6 +3,7 @@ import {
   REQUEST_ADD_TODO_SUCCESS,
   DELETE_TODO,
   REQUEST_DELETE_TODO_SUCCESS,
+  REQUEST_DELETE_TODO_IN_CATEGORY,
   COMPLETE_TODO,
   REQUEST_COMPLETE_TODO_SUCCESS,
   GET_TODO,
@@ -51,6 +52,13 @@ export const requestDeleteToDoSuccess = todo => {
   return {
     type: REQUEST_DELETE_TODO_SUCCESS,
     todo: todo
+  };
+};
+
+export const requestDeleteToDoInCategory = category => {
+  return {
+    type: REQUEST_DELETE_TODO_IN_CATEGORY,
+    category: category
   };
 };
 

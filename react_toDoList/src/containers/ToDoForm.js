@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 
 import validate from '../validators/todo.validator';
 import ToDoItems from './ToDoItems';
-import ToDoField from '../components/Field';
+import RenderField from '../components/Field';
 import {
   addToDo as addToDoActionCreator,
   getToDo
@@ -13,7 +13,7 @@ import {
 import { TODO_FORM } from '../constants/forms';
 
 class ToDoForm extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const { getToDo } = this.props;
     getToDo();
   }
@@ -22,7 +22,7 @@ class ToDoForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Field component={ToDoField} type="text" name="newToDo" />
+          <Field component={RenderField} type="text" name="newToDo" />
           <div>
             <input type="submit" value="Add New ToDo Item" />
           </div>
@@ -40,9 +40,9 @@ class ToDoForm extends Component {
 ToDoForm.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       done: PropTypes.bool,
-      name: PropTypes.string
+      todoName: PropTypes.string
     })
   ).isRequired,
   handleSubmit: PropTypes.func.isRequired,

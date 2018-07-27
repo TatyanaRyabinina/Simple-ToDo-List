@@ -3,6 +3,7 @@ import {
   REQUEST_ADD_TODO_SUCCESS,
   REQUEST_DELETE_TODO_SUCCESS,
   REQUEST_COMPLETE_TODO_SUCCESS,
+  REQUEST_DELETE_TODO_IN_CATEGORY,
   REQUEST_TODO_FAILED
 } from '../constants/todo.constants.actionTypes';
 
@@ -26,6 +27,13 @@ const TodoReducer = (state = [], action) => {
           item.done = !item.done;
         }
       });
+      return state;
+    case REQUEST_DELETE_TODO_IN_CATEGORY:
+      console.log(action.category.categoryId);
+      state = state.filter(item => {
+        return item.categoryId !== action.category.categoryId;
+      });
+      console.log(state);
       return state;
     case REQUEST_TODO_FAILED:
       return state;

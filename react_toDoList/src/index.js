@@ -5,11 +5,14 @@ import { createBrowserHistory } from 'history';
 
 import Root from './components/Root';
 import store from './store';
-import './public/style.css';
 
-const history = syncHistoryWithStore(createBrowserHistory(), store.store);
+//syncHistoryWithStore(createBrowserHistory(), store.store);
 
 ReactDOM.render(
-  <Root store={store.store} history={history} persistor={store.persistor} />,
+  <Root
+    store={store.store}
+    history={store.history}
+    persistor={store.persistor}
+  />,
   document.getElementById('root')
 );
