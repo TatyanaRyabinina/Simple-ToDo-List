@@ -4,8 +4,9 @@ import {
   REQUEST_DELETE_TODO_SUCCESS,
   REQUEST_COMPLETE_TODO_SUCCESS,
   REQUEST_DELETE_TODO_IN_CATEGORY,
-  REQUEST_TODO_FAILED
-} from '../constants/todo.constants.actionTypes';
+  REQUEST_TODO_FAILED,
+  GET_TODO
+} from '../constants/todo.constants';
 
 const TodoReducer = (state = [], action) => {
   switch (action.type) {
@@ -36,6 +37,9 @@ const TodoReducer = (state = [], action) => {
       console.log(state);
       return state;
     case REQUEST_TODO_FAILED:
+      return state;
+    case GET_TODO:
+      state = [];
       return state;
     default:
       return state;

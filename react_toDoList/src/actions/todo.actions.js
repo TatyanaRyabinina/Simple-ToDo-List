@@ -9,11 +9,14 @@ import {
   GET_TODO,
   REQUEST_GET_TODO_SUCCESS,
   REQUEST_TODO_FAILED
-} from '../constants/todo.constants.actionTypes';
+} from '../constants/todo.constants';
 
-export const getToDo = () => {
+export const getToDo = categoryId => {
   return {
-    type: GET_TODO
+    type: GET_TODO,
+    todo: {
+      categoryId: categoryId
+    }
   };
 };
 
@@ -37,7 +40,7 @@ export const addToDo = todo => {
 export const requestAddToDoSuccess = todo => {
   return {
     type: REQUEST_ADD_TODO_SUCCESS,
-    todo: todo
+    todo
   };
 };
 
@@ -51,14 +54,14 @@ export const deleteToDo = todo => {
 export const requestDeleteToDoSuccess = todo => {
   return {
     type: REQUEST_DELETE_TODO_SUCCESS,
-    todo: todo
+    todo
   };
 };
 
 export const requestDeleteToDoInCategory = category => {
   return {
     type: REQUEST_DELETE_TODO_IN_CATEGORY,
-    category: category
+    category
   };
 };
 
@@ -72,7 +75,7 @@ export const completeToDo = todo => {
 export const requestCompleteToDoSuccess = todo => {
   return {
     type: REQUEST_COMPLETE_TODO_SUCCESS,
-    todo: todo
+    todo
   };
 };
 

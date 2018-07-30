@@ -3,7 +3,8 @@ import '../public/style.css';
 
 import ToDoForm from '../containers/ToDoForm';
 
-const ToDoApp = () => {
+const ToDoApp = props => {
+  console.log(props);
   return (
     <div>
       <h2>Simple ToDo Form</h2>

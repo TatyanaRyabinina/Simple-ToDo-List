@@ -17,11 +17,14 @@ import {
   ADD_TODO,
   DELETE_TODO,
   COMPLETE_TODO
-} from '../constants/todo.constants.actionTypes';
+} from '../constants/todo.constants';
 
-function* getToDos() {
+function* getToDos(action) {
   try {
-    const data = yield call(api.get, `${CATEGORY_URL}/1/${TODO_URL}`);
+    const data = yield call(
+      api.get,
+      `${CATEGORY_URL}/${action.todo.categoryId}/${TODO_URL}`
+    );
     console.log(data);
     yield put(requestGetToDoSuccess(data));
   } catch (error) {
@@ -31,9 +34,13 @@ function* getToDos() {
 
 function* addToDo(action) {
   try {
-    const data = yield call(api.post, `${CATEGORY_URL}/1/${TODO_URL}`, {
-      body: action.todo
-    });
+    const data = yield call(
+      api.post,
+      `${CATEGORY_URL}/${action.todo.categoryId}/${TODO_URL}`,
+      {
+        body: action.todo
+      }
+    );
     yield put(requestAddToDoSuccess(data));
     yield put(reset(TODO_FORM));
   } catch (error) {
@@ -45,7 +52,7 @@ function* deleteToDo(action) {
   try {
     const data = yield call(
       api.delete,
-      `${CATEGORY_URL}/10/${TODO_URL}/${action.todo.id}`
+      `${CATEGORY_URL}/${action.todo.categoryId}/${TODO_URL}/${action.todo.id}`
     );
     yield put(requestDeleteToDoSuccess(data));
   } catch (error) {
@@ -57,7 +64,7 @@ function* completeToDo(action) {
   try {
     const data = yield call(
       api.put,
-      `${CATEGORY_URL}/10/${TODO_URL}/${action.todo.id}`,
+      `${CATEGORY_URL}/${action.todo.categoryId}/${TODO_URL}/${action.todo.id}`,
       {
         body: {
           done: !action.todo.done

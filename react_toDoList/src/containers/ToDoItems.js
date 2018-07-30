@@ -17,9 +17,7 @@ const ToDoItems = props => {
         <td>
           <input
             type="checkbox"
-            onChange={() =>
-              props.completeToDo({ id: todo.id, done: todo.done })
-            }
+            onChange={() => props.completeToDo(todo)}
             checked={todo.done}
           />
         </td>
@@ -27,7 +25,7 @@ const ToDoItems = props => {
           <input
             type="button"
             value="Delete"
-            onClick={() => props.deleteToDo({ id: todo.id })}
+            onClick={() => props.deleteToDo(todo)}
           />
         </td>
       </tr>

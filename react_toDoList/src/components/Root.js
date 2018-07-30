@@ -7,6 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import ToDoApp from './ToDoApp';
 import CategoryApp from './CategoryApp';
+import ToDoForm from '../containers/ToDoForm';
 
 const Root = ({ store, history, persistor }) => (
   <Provider store={store}>
@@ -14,7 +15,7 @@ const Root = ({ store, history, persistor }) => (
       <ConnectedRouter history={history}>
         <div>
           <Route exact path="/categories" component={CategoryApp} />
-          <Route path="/categories/:id/todos" component={ToDoApp} />
+          <Route path="/categories/:id/todos" component={ToDoForm} />
         </div>
       </ConnectedRouter>
     </PersistGate>

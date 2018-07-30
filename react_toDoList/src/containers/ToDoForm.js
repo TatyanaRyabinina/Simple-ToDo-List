@@ -14,13 +14,16 @@ import { TODO_FORM } from '../constants/forms';
 
 class ToDoForm extends Component {
   componentWillMount() {
-    const { getToDo } = this.props;
-    getToDo();
+    const { getToDo, match } = this.props;
+    getToDo(match.params.id);
   }
   render() {
     const { todos, handleSubmit } = this.props;
+    console.log(this.props.match);
     return (
       <div>
+        <h2>Simple ToDo Form</h2>
+
         <form onSubmit={handleSubmit}>
           <Field component={RenderField} type="text" name="newToDo" />
           <div>

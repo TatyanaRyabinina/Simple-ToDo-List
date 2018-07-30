@@ -33,7 +33,7 @@ export const addCategory = category => {
 export const requestAddCategorySuccess = category => {
   return {
     type: REQUEST_ADD_CATEGORY_SUCCESS,
-    category: category
+    category
   };
 };
 
@@ -47,7 +47,7 @@ export const deleteCategory = category => {
 export const requestDeleteCategorySuccess = category => {
   return {
     type: REQUEST_DELETE_CATEGORY_SUCCESS,
-    category: category
+    category
   };
 };
 
