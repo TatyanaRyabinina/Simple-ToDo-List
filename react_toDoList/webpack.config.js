@@ -1,6 +1,4 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-// const React = require('react');
-// const createReactClass = require("create-react-class");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: './src/public/index.html',
@@ -12,7 +10,8 @@ const path = require('path');
 module.exports = {
   output: {
     path: path.resolve('dist'),
-    filename: 'bundled.js'
+    filename: 'bundled.js',
+    publicPath: '/'
   },
   module: {
     rules: [

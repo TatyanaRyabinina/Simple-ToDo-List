@@ -32,6 +32,7 @@ export const addToDo = todo => {
     type: ADD_TODO,
     todo: {
       name: todo.newToDo,
+      categoryId: todo.categoryId,
       done: false
     }
   };

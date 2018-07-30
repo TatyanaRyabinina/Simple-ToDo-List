@@ -19,11 +19,9 @@ class ToDoForm extends Component {
   }
   render() {
     const { todos, handleSubmit } = this.props;
-    console.log(this.props.match);
     return (
       <div>
         <h2>Simple ToDo Form</h2>
-
         <form onSubmit={handleSubmit}>
           <Field component={RenderField} type="text" name="newToDo" />
           <div>
@@ -49,13 +47,15 @@ ToDoForm.propTypes = {
     })
   ).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  getToDo: PropTypes.func.isRequired
+  getToDo: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired
 };
 
 const ToDoForms = reduxForm({
   form: TODO_FORM,
   validate,
-  onSubmit: (values, _, { addToDo }) => addToDo(values)
+  onSubmit: (values, _, { addToDo, match }) =>
+    addToDo({ ...values, categoryId: match.params.id })
 })(ToDoForm);
 
 function mapStateToProps(state) {

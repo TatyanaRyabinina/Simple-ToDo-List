@@ -6,8 +6,6 @@ import { createBrowserHistory } from 'history';
 import Root from './components/Root';
 import store from './store';
 
-//syncHistoryWithStore(createBrowserHistory(), store.store);
-
 ReactDOM.render(
   <Root
     store={store.store}

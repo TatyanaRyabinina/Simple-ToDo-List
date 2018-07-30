@@ -1,5 +1,4 @@
 import React from 'react';
-import '../public/style.css';
 
 import ToDoForm from '../containers/ToDoForm';
 

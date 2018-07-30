@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { routerMiddleware, push } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 import reducer from './reducers/index';
@@ -30,7 +30,4 @@ let store = createStore(
 let persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
-
-store.dispatch(push('/categories'));
-
 export default { store, persistor, history };

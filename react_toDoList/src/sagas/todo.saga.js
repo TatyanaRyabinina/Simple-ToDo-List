@@ -25,7 +25,6 @@ function* getToDos(action) {
       api.get,
       `${CATEGORY_URL}/${action.todo.categoryId}/${TODO_URL}`
     );
-    console.log(data);
     yield put(requestGetToDoSuccess(data));
   } catch (error) {
     yield put(requestToDoFailed(error));
