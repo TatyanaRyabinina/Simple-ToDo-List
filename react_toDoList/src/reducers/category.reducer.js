@@ -4,10 +4,6 @@ import {
   REQUEST_DELETE_CATEGORY_SUCCESS,
   REQUEST_CATEGORY_FAILED
 } from '../constants/category.constants';
-/*
-const initialState = {
-  categories: []
-};*/
 
 const CategoryReducer = (state = [], action) => {
   switch (action.type) {

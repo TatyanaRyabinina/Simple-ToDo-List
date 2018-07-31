@@ -1,5 +1,4 @@
-import { fork, put } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
+import { fork } from 'redux-saga/effects';
 import todoSaga from './todo.saga';
 import categorySaga from './category.saga';
 

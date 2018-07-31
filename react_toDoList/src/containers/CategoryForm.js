@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
+import validate from '../validators/category.validator';
 import CategoryItems from './CategoryItems';
 import RenderField from '../components/Field';
 import {
@@ -55,7 +56,7 @@ CategoryForm.propTypes = {
 
 const CategoryForms = reduxForm({
   form: CATEGORY_FORM,
-  //validate,
+  validate,
   onSubmit: (values, _, { addCategory }) => addCategory(values)
 })(CategoryForm);
 
