@@ -21,9 +21,9 @@ class CategoryForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Field component={RenderField} type="text" name="newToDo" />
+          <Field component={RenderField} type="text" name="newCategory" />
           <div>
-            <input type="submit" value="Add New ToDo Item" />
+            <input type="submit" value="Add New Category Item" />
           </div>
         </form>
         <table className="table">

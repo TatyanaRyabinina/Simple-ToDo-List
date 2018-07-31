@@ -18,12 +18,10 @@ const RenderField = props => {
 RenderField.propTypes = {
   input: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
-  meta: PropTypes.objectOf(
-    PropTypes.shape({
-      touched: PropTypes.bool.isRequired,
-      error: PropTypes.string
-    })
-  ).isRequired
+  meta: PropTypes.shape({
+    touched: PropTypes.bool.isRequired,
+    error: PropTypes.string
+  }).isRequired
 };
 
 export default RenderField;
