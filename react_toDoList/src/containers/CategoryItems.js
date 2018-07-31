@@ -37,15 +37,7 @@ CategoryItems.propTypes = {
   deleteCategory: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
-    categories: state.categories
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  {
-    deleteCategory: deleteCategoryActionCreator
-  }
+  null,
+  { deleteCategory: deleteCategoryActionCreator }
 )(CategoryItems);

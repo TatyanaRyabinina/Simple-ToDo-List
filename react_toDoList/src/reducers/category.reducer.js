@@ -14,7 +14,6 @@ const CategoryReducer = (state = [], action) => {
       state = state.concat(action.category);
       return state;
     case REQUEST_DELETE_CATEGORY_SUCCESS:
-      console.log(state);
       state = state.filter(item => {
         return item.categoryId !== action.category.categoryId;
       });

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
+import ToDosSelectors from '../selectors/todo.selectors';
 import validate from '../validators/todo.validator';
 import ToDoItems from './ToDoItems';
 import RenderField from '../components/Field';
@@ -60,7 +61,7 @@ const ToDoForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    todos: ToDosSelectors(state) //state.todos
   };
 }
 

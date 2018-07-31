@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import ToDosSelectors from '../selectors/todo.selectors';
 import {
   completeToDo as completeToDoActionCreator,
   deleteToDo as deleteToDoActionCreator
@@ -46,7 +47,7 @@ ToDoItems.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    todos: ToDosSelectors(state)
   };
 }
 

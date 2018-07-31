@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
+import CategoriesSelectors from '../selectors/category.selectors';
 import validate from '../validators/category.validator';
 import CategoryItems from './CategoryItems';
 import RenderField from '../components/Field';
@@ -62,7 +63,7 @@ const CategoryForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    categories: state.categories
+    categories: CategoriesSelectors(state) //state.categories
   };
 }
 

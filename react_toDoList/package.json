@@ -51,6 +51,7 @@
     "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
+    "reselect": "^3.0.1",
     "webpack": "^4.16.1",
     "yup": "^0.25.1"
   }

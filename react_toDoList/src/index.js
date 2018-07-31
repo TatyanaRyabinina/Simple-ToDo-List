@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { syncHistoryWithStore } from 'react-router-redux';
-import { createBrowserHistory } from 'history';
 
 import Root from './components/Root';
 import store from './store';
