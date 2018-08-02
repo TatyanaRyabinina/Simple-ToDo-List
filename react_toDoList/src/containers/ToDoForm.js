@@ -61,7 +61,7 @@ const ToDoForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    todos: ToDosSelectors(state) //state.todos
+    todos: ToDosSelectors(state)
   };
 }
 

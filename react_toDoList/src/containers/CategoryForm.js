@@ -63,7 +63,7 @@ const CategoryForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    categories: CategoriesSelectors(state) //state.categories
+    categories: CategoriesSelectors(state)
   };
 }
 
