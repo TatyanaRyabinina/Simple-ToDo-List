@@ -12,6 +12,7 @@ import {
   getToDo
 } from '../actions/todo.actions';
 import { TODO_FORM } from '../constants/forms';
+import SearchApp from '../components/SearchApp';
 
 class ToDoForm extends Component {
   componentWillMount() {
@@ -23,17 +24,20 @@ class ToDoForm extends Component {
     return (
       <div>
         <h2>Simple ToDo Form</h2>
-        <form onSubmit={handleSubmit}>
-          <Field component={RenderField} type="text" name="newToDo" />
-          <div>
-            <input type="submit" value="Add New ToDo Item" />
-          </div>
-        </form>
-        <table className="table">
-          {todos.map((todo, index) => {
-            return <ToDoItems key={todo.id} id={index + 1} todo={todo} />;
-          })}
-        </table>
+        <SearchApp />
+        <div>
+          <form onSubmit={handleSubmit}>
+            <Field component={RenderField} type="text" name="newToDo" />
+            <div>
+              <input type="submit" value="Add New ToDo Item" />
+            </div>
+          </form>
+          <table className="table">
+            {todos.map((todo, index) => {
+              return <ToDoItems key={todo.id} id={index + 1} todo={todo} />;
+            })}
+          </table>
+        </div>
       </div>
     );
   }

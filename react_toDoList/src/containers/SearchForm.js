@@ -46,7 +46,7 @@ const SearchForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    categories: SearchSelectors(state)
+    search: SearchSelectors(state)
   };
 }
 
