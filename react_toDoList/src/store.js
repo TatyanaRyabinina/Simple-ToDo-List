@@ -10,7 +10,8 @@ import rootSaga from './sagas/index';
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['form']
 };
 
 const history = createHistory();
