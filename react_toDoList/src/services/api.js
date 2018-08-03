@@ -24,8 +24,7 @@ function myFetch(url, options) {
       return Promise.resolve(response);
     } else {
       const error = new Error(response.statusText || response.status);
-      error.response = response;
-      return Promise.reject(error);
+      return Promise.reject({ ...error, response: response });
     }
   });
 }

@@ -23,7 +23,7 @@ class CategoryForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Field component={RenderField} type="text" name="newCategory" />
+          <Field component={RenderField} type="text" name="categoryName" />
           <div>
             <input type="submit" value="Add New Category Item" />
           </div>

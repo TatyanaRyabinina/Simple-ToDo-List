@@ -1,12 +1,12 @@
 import React from 'react';
 import CategoryForm from '../containers/CategoryForm';
-import SearchApp from './SearchApp';
+import SearchForm from '../containers/SearchForm';
 
 const CategoryApp = () => {
   return (
     <div>
       <h2>Categories</h2>
-      <SearchApp />
+      <SearchForm />
       <CategoryForm />
     </div>
   );

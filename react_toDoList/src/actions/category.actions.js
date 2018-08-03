@@ -24,9 +24,7 @@ export const requestGetCategorySuccess = category => {
 export const addCategory = category => {
   return {
     type: ADD_CATEGORY,
-    category: {
-      categoryName: category.newCategory
-    }
+    category
   };
 };
 

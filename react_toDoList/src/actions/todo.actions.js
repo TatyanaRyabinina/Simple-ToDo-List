@@ -30,11 +30,7 @@ export const requestGetToDoSuccess = todo => {
 export const addToDo = todo => {
   return {
     type: ADD_TODO,
-    todo: {
-      todoName: todo.newToDo,
-      categoryId: todo.categoryId,
-      done: false
-    }
+    todo: { ...todo, done: false }
   };
 };
 

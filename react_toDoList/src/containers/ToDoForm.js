@@ -12,7 +12,7 @@ import {
   getToDo
 } from '../actions/todo.actions';
 import { TODO_FORM } from '../constants/forms';
-import SearchApp from '../components/SearchApp';
+import SearchForm from './SearchForm';
 
 class ToDoForm extends Component {
   componentWillMount() {
@@ -24,10 +24,10 @@ class ToDoForm extends Component {
     return (
       <div>
         <h2>Simple ToDo Form</h2>
-        <SearchApp />
+        <SearchForm />
         <div>
           <form onSubmit={handleSubmit}>
-            <Field component={RenderField} type="text" name="newToDo" />
+            <Field component={RenderField} type="text" name="todoName" />
             <div>
               <input type="submit" value="Add New ToDo Item" />
             </div>
