@@ -1,8 +1,15 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: './src/public/index.html',
   filename: './index.html'
+});
+
+const jQueryPlugin = new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery',
+  Popper: 'popper.js/dist/umd/popper'
 });
 
 const path = require('path');
@@ -23,13 +30,13 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.css$/
+        //use: ['style-loader', 'css-loader']
       }
     ]
   },
   devServer: {
     historyApiFallback: true
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [htmlWebpackPlugin, jQueryPlugin]
 };

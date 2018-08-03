@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import CategoryApp from './CategoryApp';
 import ToDoForm from '../containers/ToDoForm';
-import '../public/style.css';
+import 'bootstrap-material-design';
 
 const Root = ({ store, history, persistor }) => (
   <Provider store={store}>
