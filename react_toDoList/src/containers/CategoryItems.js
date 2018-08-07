@@ -17,11 +17,13 @@ const CategoryItems = props => {
           </Link>
         </td>
         <td>
-          <input
+          <button
+            className="btn"
             type="button"
-            value="Delete"
             onClick={() => props.deleteCategory({ id: category.categoryId })}
-          />
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

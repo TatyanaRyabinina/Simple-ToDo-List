@@ -5,12 +5,18 @@ const RenderField = props => {
   const {
     input,
     type,
+    placeholder,
     meta: { touched, error }
   } = props;
   return (
-    <div>
-      <input {...input} type={type} />
-      {touched && (error && <span>{error}</span>)}
+    <div className="form-group">
+      <input
+        {...input}
+        className="form-control mr-sm-2"
+        type={type}
+        placeholder={placeholder}
+      />
+      {touched && (error && <small className="text-muted">{error}</small>)}
     </div>
   );
 };
@@ -21,7 +27,8 @@ RenderField.propTypes = {
   meta: PropTypes.shape({
     touched: PropTypes.bool.isRequired,
     error: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  placeholder: PropTypes.string.isRequired
 };
 
 export default RenderField;

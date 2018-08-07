@@ -5,7 +5,9 @@ import {
   REQUEST_DELETE_CATEGORY_SUCCESS,
   GET_CATEGORY,
   REQUEST_GET_CATEGORY_SUCCESS,
-  REQUEST_CATEGORY_FAILED
+  REQUEST_CATEGORY_FAILED,
+  GET_CURRENT_CATEGORY,
+  REQUEST_GET_CURRENT_CATEGORY_SUCCESS
 } from '../constants/category.constants';
 
 export const getCategory = () => {
@@ -14,6 +16,18 @@ export const getCategory = () => {
   };
 };
 
+export const getCurrentCategory = categoryId => {
+  return {
+    type: GET_CURRENT_CATEGORY,
+    categoryId
+  };
+};
+export const requestGetCurrentCategorySuccess = category => {
+  return {
+    type: REQUEST_GET_CURRENT_CATEGORY_SUCCESS,
+    category
+  };
+};
 export const requestGetCategorySuccess = category => {
   return {
     type: REQUEST_GET_CATEGORY_SUCCESS,

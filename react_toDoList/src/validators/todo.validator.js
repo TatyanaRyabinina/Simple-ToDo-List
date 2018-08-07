@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
-  newToDo: Yup.string()
+  todoName: Yup.string()
     .required('ToDo is required!')
     .min(5, 'ToDo must be at least 5 characters!')
     .matches(/^[a-zA-Z0-9]+$/, 'Not valid!')

@@ -22,12 +22,21 @@ class CategoryForm extends Component {
     const { categories, handleSubmit } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <Field component={RenderField} type="text" name="categoryName" />
-          <div>
-            <input type="submit" value="Add New Category Item" />
+        <form onSubmit={handleSubmit} className="form-inline">
+          <Field
+            placeholder="Category"
+            component={RenderField}
+            id="newCategory"
+            type="text"
+            name="categoryName"
+          />
+          <div className="form-group">
+            <button type="submit" className="btn btn-raised btn-primary">
+              Add New Category
+            </button>
           </div>
         </form>
+        <h2 className="text-center">Categories</h2>
         <table className="table">
           {categories.map((category, index) => {
             return (

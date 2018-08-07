@@ -15,18 +15,33 @@ const SearchForm = props => {
   const { handleSubmit, clearSearch, reset } = props;
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <Field component={RenderField} type="text" name="search" />
+      <form className="form-inline" onSubmit={handleSubmit}>
+        <div className="form-inline">
+          <div className="form-group">
+            <i className="material-icons">search</i>
+          </div>
+          <Field
+            component={RenderField}
+            type="text"
+            name="search"
+            placeholder="Search"
+            id="search"
+          />
+        </div>
         <div>
-          <input type="submit" value="Search" />
-          <input
+          <button type="submit" className="btn btn-raised btn-primary">
+            Search
+          </button>
+          <button
             type="button"
-            value="Clear"
+            className="btn"
             onClick={() => {
               clearSearch();
               reset(SEARCH_FORM);
             }}
-          />
+          >
+            Clear
+          </button>
         </div>
       </form>
     </div>

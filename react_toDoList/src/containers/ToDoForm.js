@@ -11,32 +11,46 @@ import {
   addToDo as addToDoActionCreator,
   getToDo
 } from '../actions/todo.actions';
+import { getCurrentCategory } from '../actions/category.actions';
 import { TODO_FORM } from '../constants/forms';
 import SearchForm from './SearchForm';
 
 class ToDoForm extends Component {
   componentWillMount() {
-    const { getToDo, match } = this.props;
+    const { getToDo, match, getCurrentCategory } = this.props;
     getToDo(match.params.id);
+    getCurrentCategory(match.params.id);
   }
   render() {
-    const { todos, handleSubmit } = this.props;
+    const { todos, handleSubmit, currentCategory } = this.props;
     return (
       <div>
-        <h2>Simple ToDo Form</h2>
         <SearchForm />
-        <div>
-          <form onSubmit={handleSubmit}>
-            <Field component={RenderField} type="text" name="todoName" />
-            <div>
-              <input type="submit" value="Add New ToDo Item" />
+        <div className="form-group">
+          <form onSubmit={handleSubmit} className="form-inline">
+            <Field
+              component={RenderField}
+              type="text"
+              name="todoName"
+              placeholder="ToDo"
+            />
+            <div className="form-group">
+              <button type="submit" className="btn btn-raised btn-primary">
+                Add New ToDo Item
+              </button>
             </div>
           </form>
-          <table className="table">
-            {todos.map((todo, index) => {
-              return <ToDoItems key={todo.id} id={index + 1} todo={todo} />;
-            })}
-          </table>
+          <h2 className="text-center">ToDo</h2>
+          <div className="card">
+            <div className="card-header">
+              <h4 className="text-center">{currentCategory} </h4>
+            </div>
+            <table>
+              {todos.map((todo, index) => {
+                return <ToDoItems key={todo.id} id={index + 1} todo={todo} />;
+              })}
+            </table>
+          </div>
         </div>
       </div>
     );
@@ -53,6 +67,8 @@ ToDoForm.propTypes = {
   ).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   getToDo: PropTypes.func.isRequired,
+  getCurrentCategory: PropTypes.func.isRequired,
+  currentCategory: PropTypes.string.isRequired,
   match: PropTypes.object.isRequired
 };
 
@@ -65,7 +81,8 @@ const ToDoForms = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    todos: ToDosSelectors(state)
+    todos: ToDosSelectors(state),
+    currentCategory: state.currentCategory
   };
 }
 
@@ -73,6 +90,7 @@ export default connect(
   mapStateToProps,
   {
     addToDo: addToDoActionCreator,
-    getToDo
+    getToDo,
+    getCurrentCategory
   }
 )(ToDoForms);

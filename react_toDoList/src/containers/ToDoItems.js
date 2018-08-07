@@ -16,18 +16,27 @@ const ToDoItems = props => {
         <td>{id}</td>
         <td className={todo.done ? 'done' : ''}>{todo.todoName}</td>
         <td>
-          <input
-            type="checkbox"
-            onChange={() => props.completeToDo(todo)}
-            checked={todo.done}
-          />
+          <div className="checkbox">
+            <label>
+              <input
+                type="checkbox"
+                onChange={() => props.completeToDo(todo)}
+                checked={todo.done}
+              />
+              <span className="checkbox-decorator">
+                <span className="check" />
+              </span>
+            </label>
+          </div>
         </td>
         <td>
-          <input
+          <button
             type="button"
-            value="Delete"
+            className="btn"
             onClick={() => props.deleteToDo(todo)}
-          />
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

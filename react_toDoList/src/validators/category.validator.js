@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
-  newCategory: Yup.string()
+  categoryName: Yup.string()
     .required('Category is required!')
     .min(5, 'Category must be at least 5 characters!')
     .matches(/^[a-zA-Z0-9]+$/, 'Not valid!')

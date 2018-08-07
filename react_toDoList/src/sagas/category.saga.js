@@ -9,19 +9,30 @@ import {
   requestGetCategorySuccess,
   requestCategoryFailed,
   requestAddCategorySuccess,
-  requestDeleteCategorySuccess
+  requestDeleteCategorySuccess,
+  requestGetCurrentCategorySuccess
 } from '../actions/category.actions';
 import { requestDeleteToDoInCategory } from '../actions/todo.actions';
 import {
   GET_CATEGORY,
   ADD_CATEGORY,
-  DELETE_CATEGORY
+  DELETE_CATEGORY,
+  GET_CURRENT_CATEGORY
 } from '../constants/category.constants';
 
 function* getCategories() {
   try {
     const data = yield call(api.get, CATEGORY_URL);
     yield put(requestGetCategorySuccess(data));
+  } catch (error) {
+    yield put(requestCategoryFailed(error));
+  }
+}
+
+function* getCurrentCategory(action) {
+  try {
+    const data = yield call(api.get, `${CATEGORY_URL}/${action.categoryId}`);
+    yield put(requestGetCurrentCategorySuccess(data));
   } catch (error) {
     yield put(requestCategoryFailed(error));
   }
@@ -55,6 +66,7 @@ function* deleteCategory(action) {
 export default function* todoSaga() {
   yield* [
     takeEvery(GET_CATEGORY, getCategories),
+    takeEvery(GET_CURRENT_CATEGORY, getCurrentCategory),
     takeEvery(ADD_CATEGORY, addCategory),
     takeEvery(DELETE_CATEGORY, deleteCategory)
   ];

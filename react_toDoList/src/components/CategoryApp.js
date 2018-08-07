@@ -5,7 +5,6 @@ import SearchForm from '../containers/SearchForm';
 const CategoryApp = () => {
   return (
     <div>
-      <h2>Categories</h2>
       <SearchForm />
       <CategoryForm />
     </div>
